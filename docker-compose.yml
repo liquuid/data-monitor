@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+    flask:
+        image: csv-writer
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        restart: always
+        ports:
+            - "7000:80"
+        volumes:
+            - ./:/app
+        networks:
+            - code-network
+networks:
+    code-network:
+        driver: bridge
+#!/bin/bash
+#app="docker.test"
+#docker build -t ${app} .
+#docker run -d -p 7000:80 \
+#  #--name=${app} \
+#  -v $PWD:/app ${app}
+
