@@ -7,7 +7,8 @@ is_escritorio = df.Nome == 'escritorio'
 is_sala = df.Nome == 'sala'
 is_banheiro = df.Nome == 'banheiro'
 is_gu = df.Nome == 'gu'
-import pdb; pdb.set_trace()
+is_quarto = df.Nome == 'quarto'
+#import pdb; pdb.set_trace()
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(
@@ -66,6 +67,21 @@ fig.add_trace(go.Scatter(
                 name="gu - Humidade",
                 line_color='#000099',
                 opacity=0.8))        
+
+fig.add_trace(go.Scatter(
+                x=df[is_quarto].Date,
+                y=df[is_quarto]['Temp'],
+                name="quarto - Temp",
+                line_color='#0000FF',
+                opacity=0.8))
+
+fig.add_trace(go.Scatter(
+                x=df[is_quarto].Date,
+                y=df[is_quarto]['Humi'],
+                name="quarto - Humidade",
+                line_color='#000099',
+                opacity=0.8))        
+
 
 
 # Use date string to set xaxis range
